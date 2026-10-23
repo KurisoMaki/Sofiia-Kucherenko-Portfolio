@@ -86,6 +86,28 @@
 
         nav ul a:hover { color: var(--accent); }
 
+        /* Phone menu: a button that opens the links as a panel */
+        .menu-btn { display: none; width: 42px; height: 42px; border: 1px solid var(--line); border-radius: 10px;
+            background: var(--card); cursor: pointer; padding: 0; flex-direction: column; align-items: center; justify-content: center; gap: 5px; }
+
+        .menu-btn span { display: block; width: 20px; height: 2px; border-radius: 2px; background: var(--ink); transition: transform .2s, opacity .2s; }
+
+        nav.open .menu-btn span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+
+        nav.open .menu-btn span:nth-child(2) { opacity: 0; }
+
+        nav.open .menu-btn span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+        @media (max-width: 860px) {
+            .menu-btn { display: flex; }
+            nav ul { display: none; position: absolute; top: 60px; left: 0; right: 0; flex-direction: column; gap: 0;
+                background: var(--bg); border-bottom: 1px solid var(--line); padding: 6px 16px 12px;
+                box-shadow: 0 12px 24px -12px rgba(0, 0, 0, .35); }
+            nav.open ul { display: flex; }
+            nav ul a { display: block; padding: 12px 4px; font-size: 1.05rem; border-bottom: 1px solid var(--line); }
+            nav ul li:last-child a { border-bottom: none; }
+        }
+
         /* ---------- HERO ---------- */
         .hero { padding: 72px 0 56px; }
 
@@ -181,7 +203,13 @@
 
         section.contact { padding-bottom: 0; }   /* the grove stands on the section edge */
 
-        .grove img { width: auto; opacity: .75; }
+        .grove img { width: auto; height: var(--h); opacity: .75; }
+
+        @media (max-width: 860px) {
+            .grove { gap: 8px; }
+            .grove img { height: calc(var(--h) * .55); }
+            .grove img:nth-child(n+7) { display: none; }   /* 6 trees fit on a phone */
+        }
 
         /* ---------- SECTIONS ---------- */
         section { padding: 72px 0; }
@@ -372,14 +400,11 @@
             .case-body, .grid2, .grid3, .icp-cols, .diagrams { grid-template-columns: 1fr; }
             .gallery { grid-template-columns: repeat(2, 1fr); }
             .music-grid { grid-template-columns: 1fr 1fr; grid-auto-rows: 72px; }
-            nav ul { gap: 14px; }
-            nav ul li.hide-sm { display: none; }
         }
 
         @media (max-width: 520px) {
             body { font-size: 16px; }
             .wrap { padding: 0 16px; }
-            nav ul li.hide-xs { display: none; }
             section { padding: 52px 0; }
             .fun-fact { flex-direction: column; align-items: flex-start; }
             .fun-fact img { width: 100%; }
@@ -397,11 +422,14 @@
     <nav>
         <div class="wrap">
             <a class="logo" href="#top"><img class="ico tree-img" src="assets/araucarias/icon.svg" alt="">Sofiia K.</a>
-            <ul>
+            <button class="menu-btn" type="button" aria-label="Menu" aria-expanded="false" aria-controls="nav-links">
+                <span></span><span></span><span></span>
+            </button>
+            <ul id="nav-links">
                 <li><a href="#work">Work</a></li>
-                <li class="hide-sm"><a href="#approach">Approach</a></li>
-                <li class="hide-xs"><a href="#skills">Skills</a></li>
-                <li class="hide-sm"><a href="#music">Music</a></li>
+                <li><a href="#approach">Approach</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#music">Music</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </div>
@@ -697,7 +725,7 @@
                 <div class="box">
                     <i class="fa-solid fa-screwdriver-wrench big-ico"></i>
                     <h3>Build</h3>
-                    <p>I prototype my own ideas — systems code (C/C++, Python), web (JavaScript, p5.js) and
+                    <p>I prototype my own ideas — systems code (C/C++, Python), web (JavaScript) and
                         Android (Kotlin). A playable build beats a long design doc for getting honest feedback.</p>
                 </div>
             </div>
@@ -901,7 +929,7 @@
             <div>
                 <div class="skill-group">
                     <h4>Programming</h4>
-                    <div class="tags"><span class="tag">C / C++</span><span class="tag">Python</span><span class="tag">PHP · Laravel</span><span class="tag">SQL</span><span class="tag">JavaScript</span><span class="tag">p5.js</span><span class="tag">Kotlin</span><span class="tag">Jetpack Compose</span></div>
+                    <div class="tags"><span class="tag">C / C++</span><span class="tag">Python</span><span class="tag">PHP · Laravel</span><span class="tag">SQL</span><span class="tag">JavaScript</span><span class="tag">Kotlin</span><span class="tag">Jetpack Compose</span></div>
                 </div>
                 <div class="skill-group">
                     <h4>Tools</h4>
@@ -969,11 +997,11 @@
                 <a class="btn" href="https://github.com/KurisoMaki" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i>GitHub</a>
                 <a class="btn" href="https://www.instagram.com/sonya_k_darbuka/" target="_blank" rel="noopener"><i class="fa-brands fa-instagram"></i>Instagram</a>
             </div>
-            <div class="grove" aria-hidden="true"><img class="tree-img grow" data-src="assets/araucarias/rings.svg?n=10&v=book2" alt="" style="height:56px"><img class="tree-img grow" data-src="assets/araucarias/fern.svg?n=11&v=book2" alt="" style="height:84px"><img class="tree-img grow" data-src="assets/araucarias/parana.svg?n=12&v=book2" alt="" style="height:104px"><img class="tree-img grow" data-src="assets/araucarias/arcs.svg?n=13&v=book2" alt="" style="height:120px"><img class="tree-img grow" data-src="assets/araucarias/whorls.svg?n=14&v=book2" alt="" style="height:88px"><img class="tree-img grow" data-src="assets/araucarias/spiky.svg?n=15&v=book2" alt="" style="height:100px"><img class="tree-img grow" data-src="assets/araucarias/branching.svg?n=16&v=book2" alt="" style="height:72px"><img class="tree-img grow" data-src="assets/araucarias/curly.svg?n=17&v=book2" alt="" style="height:60px"></div>
+            <div class="grove" aria-hidden="true"><img class="tree-img grow" data-src="assets/araucarias/rings.svg?n=10&v=book2" alt="" style="--h:56px"><img class="tree-img grow" data-src="assets/araucarias/fern.svg?n=11&v=book2" alt="" style="--h:84px"><img class="tree-img grow" data-src="assets/araucarias/parana.svg?n=12&v=book2" alt="" style="--h:104px"><img class="tree-img grow" data-src="assets/araucarias/arcs.svg?n=13&v=book2" alt="" style="--h:120px"><img class="tree-img grow" data-src="assets/araucarias/whorls.svg?n=14&v=book2" alt="" style="--h:88px"><img class="tree-img grow" data-src="assets/araucarias/spiky.svg?n=15&v=book2" alt="" style="--h:100px"><img class="tree-img grow" data-src="assets/araucarias/branching.svg?n=16&v=book2" alt="" style="--h:72px"><img class="tree-img grow" data-src="assets/araucarias/curly.svg?n=17&v=book2" alt="" style="--h:60px"></div>
         </div>
     </section>
 
-    <footer>© 2026 Sofiia Kucherenko · Araucaria vectors by <a href="https://www.vecteezy.com/free-vector/araucaria" target="_blank" rel="noopener">Vecteezy</a></footer>
+    <footer>© 2026 Sofiia Kucherenko · Araucaria vectors by <a href="https://www.vecteezy.com/vector-art/120737-free-araucaria-vector" target="_blank" rel="noopener">Vecteezy</a></footer>
 
     <script>
         // Araucarias: each tree file contains its own grow-and-unfold animation; loading (or reloading)
@@ -1019,6 +1047,19 @@
                         trees.forEach(function (t) { play(t, +(t.dataset.delay || 0)); });
                     }, 450);
                 });
+            });
+        })();
+
+        // phone menu
+        (function () {
+            var nav = document.querySelector('nav'), btn = document.querySelector('.menu-btn');
+            if (!nav || !btn) return;
+            btn.addEventListener('click', function () {
+                var open = nav.classList.toggle('open');
+                btn.setAttribute('aria-expanded', open);
+            });
+            nav.querySelectorAll('ul a').forEach(function (a) {
+                a.addEventListener('click', function () { nav.classList.remove('open'); btn.setAttribute('aria-expanded', 'false'); });
             });
         })();
     </script>
