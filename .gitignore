@@ -1,0 +1,14 @@
+# Originals — the site uses the compressed copies (assets/photos/, voice-*.jpg, *.mp4 below)
+assets/*.jpg
+!assets/voice-*.jpg
+!assets/voice-painter-poster.jpg
+!assets/icp-demo-poster.jpg
+assets/*.mp4
+!assets/hangman.mp4
+!assets/voice-painter-premzitky.mp4
+!assets/icp-demo.mp4
+assets/photos/bass.png
+
+# Local tool, not part of the site
+layout-editor.html
+unfold-playground.html

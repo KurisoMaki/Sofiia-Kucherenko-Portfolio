@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 160">
+<style>
+  .trunk { stroke-dasharray: 150; stroke-dashoffset: 150;
+           animation: grow 0.85s ease-out forwards; }
+  .branch { transform-box: view-box; animation: open 0.8s cubic-bezier(.2,.75,.2,1.15) both; }
+  @keyframes grow { to { stroke-dashoffset: 0; } }
+  @keyframes open { from { transform: rotate(var(--closed)); opacity: 0; }
+                    15% { opacity: 1; }
+                    to { transform: rotate(0deg); opacity: 1; } }
+  @media (prefers-reduced-motion: reduce) {
+    .trunk, .branch { animation: none; stroke-dashoffset: 0; opacity: 1; }
+  }
+</style>
+<g fill="none" stroke="#2f6e47" stroke-linecap="round">
+<path class="trunk" d="M50 156V6" stroke-width="9"/>
+<path class="branch" d="M50 26 Q45.1 24.7 40.3 18.9" stroke-width="8" style="transform-origin:50px 26px;--closed:53.8deg;animation-delay:1.00s"/>
+<path class="branch" d="M50 26 Q54.9 24.7 59.7 18.9" stroke-width="8" style="transform-origin:50px 26px;--closed:-53.8deg;animation-delay:1.00s"/>
+<path class="branch" d="M50 60 Q40.8 57.9 31.5 48.1" stroke-width="8" style="transform-origin:50px 60px;--closed:57.2deg;animation-delay:1.24s"/>
+<path class="branch" d="M50 60 Q59.2 57.9 68.5 48.1" stroke-width="8" style="transform-origin:50px 60px;--closed:-57.2deg;animation-delay:1.24s"/>
+<path class="branch" d="M50 94 Q36.0 91.2 22.1 78.3" stroke-width="8" style="transform-origin:50px 94px;--closed:60.6deg;animation-delay:1.48s"/>
+<path class="branch" d="M50 94 Q64.0 91.2 77.9 78.3" stroke-width="8" style="transform-origin:50px 94px;--closed:-60.6deg;animation-delay:1.48s"/>
+<path class="branch" d="M50 128 Q31.1 124.7 12.3 109.6" stroke-width="8" style="transform-origin:50px 128px;--closed:64.0deg;animation-delay:1.72s"/>
+<path class="branch" d="M50 128 Q68.8 124.7 87.7 109.6" stroke-width="8" style="transform-origin:50px 128px;--closed:-64.0deg;animation-delay:1.72s"/>
+</g></svg>
